@@ -48,7 +48,11 @@ PROJECT_APP = [
     "common.apps.CommonConfig",
 ]
 
-INSTALLED_APPS = SYSTEM_APP + PROJECT_APP
+THIRD_PARTY = [
+    "restframework",
+]
+
+INSTALLED_APPS = SYSTEM_APP + PROJECT_APP + THIRD_PARTY
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -78,6 +82,7 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = "config.wsgi.application"
 
 
@@ -89,6 +94,13 @@ DATABASES = {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     }
+}
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+    ]
 }
 
 
