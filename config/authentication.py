@@ -11,7 +11,7 @@ class JWTauthetication(BaseAuthentication):
 
         if not token:
             return None
-        decoded = jwt.decode(token, settings.secret_key, algorithms=["HS256"])
+        decoded = jwt.decode(token, settings.SECRET_KEY, algorithms=["HS256"])
         pk = decoded.get("pk")
         if not pk:
             raise AuthenticationFailed("No Permission")
